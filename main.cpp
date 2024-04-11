@@ -1,15 +1,15 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib> // Для использования функции rand()
+#include <cstdlib>
 
 std::vector<std::vector<int>> createRandomMatrix(int k, int l) {
     std::vector<std::vector<int>> matrix(k, std::vector<int>(l));
-    // Seed the random number generator
-    std::srand(static_cast<unsigned int>(time(nullptr)));
+    //Разные при каждом запуске
+    //std::srand(static_cast<unsigned int>(time(nullptr)));
 
+    // Заполняем случайными числами от 1 до 100
     for (int i = 0; i < k; ++i) {
         for (int j = 0; j < l; ++j) {
-            // Generate random numbers in the range from 1 to 100
             matrix[i][j] = std::rand() % 100 + 1;
         }
     }
@@ -21,12 +21,12 @@ std::vector<std::vector<int>> createRandomMatrix(int k, int l) {
 
 int main() {
 
-    const int rows = 10; // Number of rows
-    const int cols = 10; // Number of columns
+    const int rows = 10000; 
+    const int cols = 10000; 
 
     std::vector<std::vector<int>> matrix = createRandomMatrix(rows, cols);
 
-    // Print the matrix
+    // Вывод элементов сгенерированной матрицы
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             std::cout << matrix[i][j] << " ";
@@ -60,14 +60,14 @@ int main() {
     for (int i = 0; i < rows; ++i) {
         std::cout << "Строка " << i+1 << ": " << row_sum[i] << std::endl;
     }
-    std::cout << "\nОбщая сумма всех элементов по строкам: " << total_sum1 << std::endl;
+    std::cout << "\n Общая сумма всех элементов по строкам: " << total_sum1 << std::endl;
 
 
-    std::cout << "\nСумма по столбцам:\n";
+    std::cout << "\n Сумма по столбцам:\n";
     for (int j = 0; j < cols; ++j) {
         std::cout << "Столбец " << j+1 << ": " << col_sum[j] << std::endl;
     }
-    std::cout << "\nОбщая сумма всех элементов по столбцам: " << total_sum2 << std::endl;
+    std::cout << "\n Общая сумма всех элементов по столбцам: " << total_sum2 << std::endl;
     
     return 0;
 }
